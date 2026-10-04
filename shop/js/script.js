@@ -11,7 +11,8 @@ productCards.forEach((card) => {
         const product = {
             id: Number(card.dataset.id),
             name: card.dataset.name,
-            price: Number(card.dataset.price)
+            price: Number(card.dataset.price),
+            image: card.querySelector('img').src
         };
 
         cart.push(product);
@@ -38,8 +39,12 @@ function renderCart() {
         item.classList.add('cart-item');
 
         item.innerHTML = `
-            <span>${product.name}</span>
-            <span>${product.price} ₽</span>
+            <img src="${product.image}" alt="${product.name}">
+    
+            <div class="cart-item-info">
+                <span class="cart-item-name">${product.name}</span>
+                <span class="cart-item-price">${product.price} ₽</span>
+            </div>
         `;
 
         cartItems.appendChild(item);

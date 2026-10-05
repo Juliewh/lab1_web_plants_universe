@@ -1,4 +1,8 @@
-const cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 const productCards = document.querySelectorAll('.product-card');
 
@@ -28,6 +32,7 @@ productCards.forEach((card) => {
             cart.push(product);
         }    
     
+        saveCart();
         renderCart();
     });
 });
@@ -91,6 +96,7 @@ function renderCart() {
         decreaseButton.addEventListener('click', () => {
             if (product.quantity > 1) {
                 product.quantity -= 1;
+                saveCart();
             }
 
             renderCart();
@@ -99,6 +105,7 @@ function renderCart() {
         increaseButton.addEventListener('click', () => {
             product.quantity += 1;
 
+            saveCart();
             renderCart();
         });
 
@@ -109,6 +116,7 @@ function renderCart() {
 
             cart.splice(productIndex, 1);
 
+            saveCart();
             renderCart();
         });
 
@@ -117,3 +125,5 @@ function renderCart() {
 
     cartTotal.textContent = `${total} ₽`;
 }
+
+renderCart();

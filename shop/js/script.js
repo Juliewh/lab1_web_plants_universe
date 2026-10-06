@@ -55,41 +55,65 @@ function renderCart() {
         const item = document.createElement('div');
 
         item.classList.add('cart-item');
+        const image = document.createElement('img');
+        image.src = product.image;
+        image.alt = product.name;
 
-        item.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-    
-            <div class="cart-item-info">
-                <span class="cart-item-name">${product.name}</span>
-                <span class="cart-item-price">${product.price} ₽</span>
-            
-                <div class="quantity-controls">
-                    <button
-                        class="quantity-button decrease-button"
-                        type="button"
-                    >
-                        −
-                    </button>
+        const itemInfo = document.createElement('div');
+        itemInfo.classList.add('cart-item-info');
 
-                    <span>${product.quantity}</span>
+        const itemName = document.createElement('span');
+        itemName.classList.add('cart-item-name');
+        itemName.textContent = product.name;
 
-                    <button
-                        class="quantity-button increase-button"
-                        type="button"
-                    >
-                        +
-                    </button>
-                </div>
-            </div>
-        
-            <button class="remove-button" type="button">
-                Удалить
-            </button>
-        `;
+        const itemPrice = document.createElement('span');
+        itemPrice.classList.add('cart-item-price');
+        itemPrice.textContent = `${product.price} ₽`;
 
-        const decreaseButton = item.querySelector('.decrease-button');
-        const increaseButton = item.querySelector('.increase-button');
-        const removeButton = item.querySelector('.remove-button');
+        const quantityControls = document.createElement('div');
+        quantityControls.classList.add('quantity-controls');
+
+        const decreaseButton = document.createElement('button');
+        decreaseButton.classList.add(
+            'quantity-button',
+            'decrease-button'
+        );
+        decreaseButton.type = 'button';
+        decreaseButton.textContent = '−';
+
+        const quantity = document.createElement('span');
+        quantity.textContent = product.quantity;
+
+        const increaseButton = document.createElement('button');
+        increaseButton.classList.add(
+            'quantity-button',
+            'increase-button'
+        );
+        increaseButton.type = 'button';
+        increaseButton.textContent = '+';
+
+        const removeButton = document.createElement('button');
+        removeButton.classList.add('remove-button');
+        removeButton.type = 'button';
+        removeButton.textContent = 'Удалить';
+
+        quantityControls.append(
+            decreaseButton,
+            quantity,
+            increaseButton
+        );
+
+        itemInfo.append(
+            itemName,
+            itemPrice,
+            quantityControls
+        );
+
+        item.append(
+            image,
+            itemInfo,
+            removeButton
+);
 
         decreaseButton.addEventListener('click', () => {
             if (product.quantity > 1) {

@@ -139,3 +139,18 @@ checkoutButton.addEventListener('click', () => {
 closeModalButton.addEventListener('click', () => {
     orderModal.style.display = 'none';
 });
+
+const orderForm = document.querySelector('.order-form');
+const orderSuccess = document.querySelector('.order-success');
+
+orderForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    orderSuccess.hidden = false;
+
+    orderForm.reset();
+
+    cart = [];
+    saveCart();
+    renderCart();
+});

@@ -301,3 +301,9 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+.order-success {
+    margin: 20px 0 0;
+    text-align: center;
+    font-weight: bold;
+}

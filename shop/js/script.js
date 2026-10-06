@@ -6,8 +6,6 @@ function saveCart() {
 
 const productCards = document.querySelectorAll('.product-card');
 
-console.log('Товаров в каталоге:', productCards.length);
-
 productCards.forEach((card) => {
     const button = card.querySelector('button');
 
@@ -131,8 +129,11 @@ renderCart();
 const checkoutButton = document.querySelector('.checkout-button');
 const orderModal = document.querySelector('#order-modal');
 const closeModalButton = document.querySelector('.modal-close');
+const orderForm = document.querySelector('.order-form');
+const orderSuccess = document.querySelector('.order-success');
 
 checkoutButton.addEventListener('click', () => {
+    orderSuccess.hidden = true;
     orderModal.style.display = 'flex';
 });
 
@@ -140,8 +141,6 @@ closeModalButton.addEventListener('click', () => {
     orderModal.style.display = 'none';
 });
 
-const orderForm = document.querySelector('.order-form');
-const orderSuccess = document.querySelector('.order-success');
 
 orderForm.addEventListener('submit', (event) => {
     event.preventDefault();

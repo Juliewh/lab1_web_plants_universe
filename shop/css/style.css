@@ -307,3 +307,14 @@ body {
     text-align: center;
     font-weight: bold;
 }
+
+@media (max-width: 550px) {
+    .cart-item {
+        flex-wrap: wrap;
+    }
+
+    .remove-button {
+        width: 100%;
+        text-align: left;
+    }
+}

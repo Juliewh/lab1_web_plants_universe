@@ -229,3 +229,75 @@ body {
     color: #8a3f3f;
     cursor: pointer;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(38, 53, 42, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    width: min(500px, 100%);
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 16px;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-field label {
+    font-weight: bold;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d4d8d3;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 16px;
+}
+
+.order-button {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #26352a;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}

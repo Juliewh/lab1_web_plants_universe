@@ -127,3 +127,15 @@ function renderCart() {
 }
 
 renderCart();
+
+const checkoutButton = document.querySelector('.checkout-button');
+const orderModal = document.querySelector('#order-modal');
+const closeModalButton = document.querySelector('.modal-close');
+
+checkoutButton.addEventListener('click', () => {
+    orderModal.style.display = 'flex';
+});
+
+closeModalButton.addEventListener('click', () => {
+    orderModal.style.display = 'none';
+});

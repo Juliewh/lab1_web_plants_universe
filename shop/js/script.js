@@ -51,35 +51,6 @@ products.forEach((product) => {
     });
 });
 
-productCards.forEach((card) => {
-    const button = card.querySelector('button');
-
-    button.addEventListener('click', () => {
-        const productId = Number(card.dataset.id);
-    
-        const existingProduct = cart.find(
-            (product) => product.id === productId
-        );
-    
-        if (existingProduct) {
-            existingProduct.quantity += 1;
-        } else {
-            const product = {
-                id: productId,
-                name: card.dataset.name,
-                price: Number(card.dataset.price),
-                image: card.querySelector('img').src,
-                    quantity: 1
-            };
-
-            cart.push(product);
-        }    
-    
-        saveCart();
-        renderCart();
-    });
-});
-
 function renderCart() {
     const cartItems = document.querySelector('.cart-items');
     const cartTotal = document.querySelector('.cart-total span');

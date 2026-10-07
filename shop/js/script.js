@@ -4,7 +4,52 @@ function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-const productCards = document.querySelectorAll('.product-card');
+const productsContainer = document.querySelector('.products');
+
+products.forEach((product) => {
+    const card = document.createElement('article');
+    card.classList.add('product-card');
+
+    const image = document.createElement('img');
+    image.src = product.image;
+    image.alt = product.name;
+
+    const productInfo = document.createElement('div');
+    productInfo.classList.add('product-info');
+
+    const name = document.createElement('h2');
+    name.textContent = product.name;
+
+    const price = document.createElement('p');
+    price.classList.add('product-price');
+    price.textContent = `${product.price} ₽`;
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = 'Добавить в корзину';
+
+    productInfo.append(name, price, button);
+    card.append(image, productInfo);
+    productsContainer.append(card);
+
+    button.addEventListener('click', () => {
+        const existingProduct = cart.find(
+            (item) => item.id === product.id
+        );
+
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cart.push({
+                ...product,
+                quantity: 1
+            });
+        }
+
+        saveCart();
+        renderCart();
+    });
+});
 
 productCards.forEach((card) => {
     const button = card.querySelector('button');
